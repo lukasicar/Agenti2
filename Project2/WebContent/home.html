@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Home</title>
+</head>
+<body>
+	<div>
+	<ul class="nav navbar-nav navbar-left">
+ 		<li data-ng-click="newMessage()"><a href="#">
+			<span class="glyphicon glyphicon-envelope yellow"></span>&nbsp;New message</a>
+		</li>
+    </ul>
+    </div>
+ 	<div class="agent-list container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="header">Agent Types</div>
+                <div class="content">
+                    <table class="table">
+                        <tr>
+                            <th class="purple">Name</th>
+                            <th class="purple">Module</th>
+                            <th class="purple" style="width: 45px">Run</th>
+                        </tr>
+                        <tr data-ng-repeat="type in agentTypes | orderBy:'name'">
+                            <td class="green">{{type.name}}</td>
+                            <td>{{type.module}}</td>
+                            <td class="clickable ta-mid" data-ng-click="runAgent(type)">
+                                <span class="glyphicon glyphicon-flash yellow"></span>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="header">Running Agents</div>
+                <div class="content">
+                    <table class="table">
+                        <tr>
+                            <th class="purple">Name</th>
+                            <th class="purple">Type</th>
+                            <th class="purple">Host</th>
+                            <th style="width: 45px"></th>
+                            <th style="width: 45px"></th>
+                        </tr>
+                        <tr data-ng-repeat="agent in runningAgents">
+                            <td class="green">{{agent.name}}</td>
+                            <td>{{agent.type.name}}</td>
+                            <td class="red">{{agent.host.alias}}</td>
+                            <td class="clickable ta-mid" data-ng-click="newMessage(agent)">
+                                <span class="glyphicon glyphicon-envelope yellow"></span>
+                            </td>
+                            <td class="clickable ta-mid" data-ng-click="stopAgent(agent)">
+                                <span class="glyphicon glyphicon-remove yellow"></span>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="log container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="header">
+                    Log&nbsp;<span class="glyphicon glyphicon-trash clickable" data-ng-click="clearLog()"></span>
+                </div>
+                <div class="content">
+                    <div data-ng-repeat="log in logs">
+                        <span class="green">{{log.date | date:'mediumTime'}}</span>
+                        &nbsp;
+                        <span>{{log.content}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

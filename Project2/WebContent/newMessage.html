@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>New Message</title>
+</head>
+<body>
+	<div class="p-20">
+    <h2>Send new message</h2>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="input-group input-container tm-5">
+                <span class="input-group-addon input-description-135" id="performative-edit">Performative</span>
+                <select class="form-control" data-ng-model="message.performative">
+                    <option data-ng-repeat="performative in performatives">{{ performative }}</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="input-group input-container tm-5">
+                <span class="input-group-addon input-description-135" id="sender-edit">Sender</span>
+                <select class="form-control" data-ng-options="agent.name for agent in runningAgents"
+                        data-ng-model="message.sender">
+                </select>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="input-group input-container tm-5">
+                <span class="input-group-addon input-description-135" id="receivers-select">Receivers</span>
+                <oi-select oi-options="a as (a.name + ' - ' + a.host.alias) for a in runningAgents"
+                           data-ng-model="message.receivers" multiple placeholder="Receivers"></oi-select>
+                           
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="input-group input-container tm-5">
+                <span class="input-group-addon input-description-135" id="replyTo-edit">Reply to</span>
+                <select class="form-control" data-ng-options="a as (a.name + ' - ' + a.host.alias) for a in runningAgents"
+                        data-ng-model="message.replyTo">
+                </select>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="input-group input-container tm-5">
+                <span class="input-group-addon input-description-135" id="description-edit">Content</span>
+                <textarea class="form-control" placeholder="Content" aria-describedby="description-edit" rows="2"
+                          data-ng-model="message.content"></textarea>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="input-group input-container tm-5">
+                <span class="input-group-addon input-description-135" id="language-edit">Language</span>
+                <input type="text" class="form-control" placeholder="Language" aria-describedby="language-edit"
+                       data-ng-model="message.language"/>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="input-group input-container tm-5">
+                <span class="input-group-addon input-description-135" id="encoding-edit">Encoding</span>
+                <input type="text" class="form-control" placeholder="Encoding" aria-describedby="encoding-edit"
+                       data-ng-model="message.encoding"/>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="input-group input-container tm-5">
+                <span class="input-group-addon input-description-135" id="ontology-edit">Ontology</span>
+                <input type="text" class="form-control" placeholder="Ontology" aria-describedby="ontology-edit"
+                       data-ng-model="message.ontology"/>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="input-group input-container tm-5">
+                <span class="input-group-addon input-description-135" id="protocol-edit">Protocol</span>
+                <input type="text" class="form-control" placeholder="Protocol" aria-describedby="protocol-edit"
+                      data-ng-model="message.protocol"/>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="input-group input-container tm-5">
+                <span class="input-group-addon input-description-135" id="conversationId-edit">Conversation ID</span>
+                <input type="text" class="form-control" placeholder="Conversation ID"
+                       aria-describedby="conversationId-edit"
+                       data-ng-model="message.conversationID"/>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="input-group input-container tm-5">
+                <span class="input-group-addon input-description-135" id="replyWith-edit">Reply with</span>
+                <input type="text" class="form-control" placeholder="Reply with" aria-describedby="replyWith-edit"
+                       data-ng-model="message.replyWith"/>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="input-group input-container tm-5">
+                <span class="input-group-addon input-description-135" id="inReplyTo-edit">In reply to</span>
+                <input type="text" class="form-control" placeholder="In reply by" aria-describedby="inReplyBy-edit"
+                       data-ng-model="message.inReplyTo"/>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="input-group input-container tm-5">
+                <span class="input-group-addon input-description-135" id="replyBy-edit">Reply by</span>
+                <input type="number" class="form-control" placeholder="Reply by" aria-describedby="replyBy-edit"
+                       data-ng-model="message.replyBy"/>
+            </div>
+        </div>
+    </div>
+    <div class="tm-10" style="height: 34px">
+        <button type="button" class="btn btn-default pull-right" data-ng-click="send()">
+            <span class="glyphicon glyphicon-envelope"></span>&nbsp;Send message
+        </button>
+        <button type="button" class="btn btn-default pull-right rm-10" data-ng-click="close()">
+            <span class="glyphicon glyphicon-remove"></span>&nbsp;Close
+        </button>
+    </div>
+
+</div>
+</body>
+</html>
